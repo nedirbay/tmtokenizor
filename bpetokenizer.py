@@ -17,7 +17,7 @@ class TurkmenBPETokenizer:
         self.word_freqs = {}
         
         # Türkmen diliniň aýratyn harplary
-        self.turkmen_chars = set('äňöşüýž')
+        self.turkmen_chars = set('äňöşüýžç')
         
         # Türkmen erkek atlary
         self.male_names = {
@@ -320,7 +320,7 @@ class TurkmenBPETokenizer:
         text_lower = text.lower()
         
         # Regex pattern
-        pattern = r"[a-zäňöşüýžа-я]+|[0-9]+|[^\w\s]+"
+        pattern = r"[a-zäňöşüýžçа-я]+|[0-9]+|[^\w\s]+"
         raw_tokens = re.findall(pattern, text_lower)
         
         typed_tokens = []
@@ -730,10 +730,9 @@ class TurkmenBPETokenizer:
 # Ulanyş mysaly
 if __name__ == "__main__":
 
-    turkmen_corpus = open("dataset_AB_220524.txt", "r", encoding="utf-8").readlines()
     print("=" * 60)
     tokenizer = TurkmenBPETokenizer(vocab_size=1000)
-    tokenizer.train(turkmen_corpus, verbose=True)
+    tokenizer.train("dataset_AB_220524.txt", verbose=True)
     
     # Synaglary geçir
     print("\n" + "=" * 60)
