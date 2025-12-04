@@ -730,10 +730,9 @@ class TurkmenBPETokenizer:
 # Ulanyş mysaly
 if __name__ == "__main__":
 
-    turkmen_corpus = open("dataset_AB_220524.txt", "r", encoding="utf-8").readlines()
     print("=" * 60)
     tokenizer = TurkmenBPETokenizer(vocab_size=1000)
-    tokenizer.train(turkmen_corpus, verbose=True)
+    tokenizer.train("dataset_AB_220524.txt", verbose=True)
     
     # Synaglary geçir
     print("\n" + "=" * 60)
